@@ -45,6 +45,8 @@ class ScheduleCalculator {
                             if (priorityIndex != null && roomIndex == priorityIndex) continue
                             if (weekends > 0) break
 
+                            if (roomIndex == nightIndex && matrix[lfkIndex][dateIndex] != null) continue
+
                             if ((weekdays == -1 || weekdays > 0) && matrix[roomIndex][dateIndex] == null) {
                                 matrix[roomIndex][dateIndex] = employee.name
                                 break
@@ -75,6 +77,8 @@ class ScheduleCalculator {
                     if (!isAddedToPriority) {
                         for (roomIndex in matrix.indices) {
                             if (weekends > 0) break
+
+                            if (roomIndex == nightIndex && matrix[lfkIndex][dateIndex] != null) continue
 
                             if ((weekdays == -1 || weekdays > 0) && matrix[roomIndex][dateIndex] == null) {
                                 matrix[roomIndex][dateIndex] = employee.name

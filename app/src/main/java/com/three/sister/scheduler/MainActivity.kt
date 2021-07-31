@@ -4,20 +4,15 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import org.apache.poi.hssf.usermodel.HSSFCellStyle
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.hssf.util.HSSFColor
+import org.apache.poi.ss.usermodel.CellStyle
 import org.apache.poi.ss.usermodel.Workbook
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
-import org.apache.poi.ss.usermodel.CellStyle
-
-import org.apache.poi.hssf.usermodel.HSSFCellStyle
-
-import org.apache.poi.hssf.util.HSSFColor
-
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -58,8 +53,17 @@ class MainActivity : AppCompatActivity() {
         cellStyle.fillForegroundColor = HSSFColor.CORAL.index
         cellStyle.fillPattern = HSSFCellStyle.SOLID_FOREGROUND
         cellStyle.alignment = CellStyle.ALIGN_CENTER
+        cellStyle.verticalAlignment = CellStyle.VERTICAL_CENTER
+
+        val employeeCellStyle: CellStyle = workbook.createCellStyle()
+        employeeCellStyle.alignment = CellStyle.ALIGN_CENTER
+        employeeCellStyle.verticalAlignment = CellStyle.VERTICAL_CENTER
 
         val sheet = workbook.createSheet("Schedule")
+        sheet.setColumnWidth(0, (15 * 400))
+        for (index in 1..matrix.first().size) {
+            sheet.setColumnWidth(index, (15 * 200))
+        }
 
         for (roomIndex in matrix.indices) {
             val row = sheet.createRow(roomIndex + 1)
@@ -80,6 +84,7 @@ class MainActivity : AppCompatActivity() {
                 }
             } else {
                 val row = sheet.createRow(roomIndex)
+                row.heightInPoints = 20F
                 val roomCell = row.createCell(0)
                 roomCell.setCellValue(Room.values()[roomIndex - 1].title)
                 roomCell.cellStyle = cellStyle
@@ -87,6 +92,7 @@ class MainActivity : AppCompatActivity() {
                 for (employeeIndex in matrix[roomIndex - 1].indices) {
                     val cell = row.createCell(employeeIndex + 1)
                     cell.setCellValue(matrix[roomIndex - 1][employeeIndex])
+                    cell.cellStyle = employeeCellStyle
                 }
             }
         }
