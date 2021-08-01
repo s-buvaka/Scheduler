@@ -1,5 +1,7 @@
 package com.three.sister.scheduler
 
+import java.io.Serializable
+
 /**
  * @author s.buvaka
  */
@@ -8,9 +10,12 @@ class Employee(
     val surname: String,
     val schedule: Schedule,
     val priority: Room? = null
-)
+) : Serializable {
 
-class Schedule(val weekdays: Int, val weekends: Int) {
+    fun generateName(): String = "$name \n$surname"
+}
+
+class Schedule(val weekdays: Int, val weekends: Int) : Serializable {
 
     companion object {
         private const val MAX_DAYS = -1

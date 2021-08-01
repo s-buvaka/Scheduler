@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Scheduler</string>
+    <string name="name_desc">Введите имя</string>
+    <string name="surname_desc">Введите фамилию</string>
+    <string name="confirm_button">Добавить</string>
+
+    <string-array name="rooms">
+        <item>Нет приоритета</item>
+        <item>Первый этаж</item>
+        <item>ЛФК</item>
+        <item>Второй этаж: Старый</item>
+        <item>Второй этаж: Новый</item>
+        <item>Третий этаж: Старый</item>
+        <item>Третий этаж: Новый</item>
+        <item>"Четвертый этаж</item>
+        <item>Ночная смена</item>
+        <item>Генеральная уборка</item>
+    </string-array>
 </resources>

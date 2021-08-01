@@ -36,7 +36,7 @@ class ScheduleCalculator {
                     var isAddedToPriority = false
                     if (priorityIndex != null) {
                         if ((weekdays == -1 || weekdays > 0) && matrix[priorityIndex][dateIndex] == null) {
-                            matrix[priorityIndex][dateIndex] = employee.name
+                            matrix[priorityIndex][dateIndex] = employee.generateName()
                             isAddedToPriority = true
                         }
                     }
@@ -48,7 +48,7 @@ class ScheduleCalculator {
                             if (roomIndex == nightIndex && matrix[lfkIndex][dateIndex] != null) continue
 
                             if ((weekdays == -1 || weekdays > 0) && matrix[roomIndex][dateIndex] == null) {
-                                matrix[roomIndex][dateIndex] = employee.name
+                                matrix[roomIndex][dateIndex] = employee.generateName()
                                 break
                             }
                         }
