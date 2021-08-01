@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             val workbook: Workbook = excelFileGenerator.generateWorkBook(matrix)
 
             val intentShareFile = Intent(Intent.ACTION_SEND)
-            val fileWithinMyDir = excelFileGenerator.getExcelFile(workbook, this, "Schedule")
+            val fileWithinMyDir = excelFileGenerator.getExcelFile(workbook, this, "Schedule.xls")
 
             val sharing = FileProvider.getUriForFile(this, this.applicationContext.packageName + ".provider", fileWithinMyDir)
             if (fileWithinMyDir.exists()) {

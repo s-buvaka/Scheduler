@@ -19,7 +19,8 @@
             android:id="@+id/nameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/name_desc" />
+            android:hint="@string/name_desc"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -38,6 +39,14 @@
             android:hint="@string/surname_desc" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/maxDaysToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Максимум дней"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/surnameInputLayout" />
+
     <TextView
         android:id="@+id/weekdaysTitle"
         android:layout_width="wrap_content"
@@ -45,7 +54,7 @@
         android:layout_marginTop="16dp"
         android:text="Рабочие"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/surnameInputLayout" />
+        app:layout_constraintTop_toBottomOf="@id/maxDaysToggle" />
 
     <TextView
         android:id="@+id/weekendsTitle"
@@ -55,7 +64,7 @@
         android:layout_marginTop="16dp"
         android:text="Выходные"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/surnameInputLayout" />
+        app:layout_constraintTop_toBottomOf="@id/maxDaysToggle" />
 
     <EditText
         android:id="@+id/weekdaysInput"

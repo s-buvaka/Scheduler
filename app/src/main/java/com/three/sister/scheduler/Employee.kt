@@ -15,7 +15,7 @@ class Employee(
     fun generateName(): String = "$name \n$surname"
 }
 
-class Schedule(val weekdays: Int, val weekends: Int) : Serializable {
+data class Schedule(val weekdays: Int, val weekends: Int) : Serializable {
 
     companion object {
         private const val MAX_DAYS = -1

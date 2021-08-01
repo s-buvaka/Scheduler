@@ -37,9 +37,11 @@ class EmployeeAdapter : RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
         private val schedule: TextView = itemView.findViewById(R.id.schedule)
 
         fun bind(employee: Employee) {
+            val scheduleText = if (employee.schedule == Schedule.MAX) "По максимуму" else "${employee.schedule.weekdays} / ${employee.schedule.weekends}"
+
             name.text = "${employee.name} ${employee.surname}"
-            priority.text = employee.priority?.title
-            schedule.text = "${employee.schedule.weekdays} / ${employee.schedule.weekends}"
+            priority.text = "Приоритет: ${employee.priority?.title ?: "Нет"}"
+            schedule.text = "График: $scheduleText"
         }
     }
 }
